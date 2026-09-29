@@ -7,8 +7,10 @@
     <ul>
         <li><strong>ID Buku:</strong> {{ $detailBuku['id'] }}</li>
         <li><strong>Judul Buku:</strong> {{ $detailBuku['judul'] }}</li>
-        <li><strong>Kategori:</strong> {{ $detailBuku['kategori'] }}</li>
         <li><strong>Penulis:</strong> {{ $detailBuku['penulis'] }}</li>
+        <li><strong>Kategori:</strong> {{ $detailBuku['kategori'] }}</li>
+        <li><strong>Buku tersedia:</strong> {{ $detailBuku['stock'] }}</li>
+
     </ul>
 
     <br>

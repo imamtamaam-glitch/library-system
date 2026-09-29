@@ -1,12 +1,11 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
 
-@section('content')
-    <h2>Halaman Dashboard</h2>
-    <p>Wellcome di Sistem Informasi Perpustakaan.</p>
-    <ul>
-        <li>Total Buku: {{ $totalBooks }}</li>
-        <li>Total Kategori: {{ $totalCategories }}</li>
-        <li>Total Member: {{ $totalMembers }}</li>
-    </ul>
-@endsection
+@foreach($books as $book)
+    <h3>Judul: {{ $book->title }}</h3>
+    <p>ID: {{ $book->id }}</p>
+    <p>Penulis: {{ $book->author }}</p>
+    <p>Tahun: {{ $book->year }}</p>
+    <p>Stok: {{ $book->stock }}</p>
+    <hr>
+@endforeach

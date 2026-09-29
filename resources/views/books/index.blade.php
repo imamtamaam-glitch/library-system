@@ -7,7 +7,7 @@
     <ul>
         @foreach($books as $book)
             <li>
-                <a href="/books/{{ $book['id'] }}">{{ $book['judul'] }}</a>
+                <a href="/books/{{ $book['id'] }}">{{ $book['judul'] }}</a> <strong>Buku tersedia: {{ $book['stock'] }}</strong>
             </li>
         @endforeach
     </ul>
