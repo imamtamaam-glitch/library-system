@@ -1,14 +1,16 @@
 <?php
+
 namespace App\Http\Controllers;
+
+use App\Models\Book;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $totalBooks = 8;
-        $totalCategories = 5;
-        $totalMembers = 5;
-
-        return view('dashboard.index', compact('totalBooks', 'totalCategories', 'totalMembers'));
+        $books = Book::all();
+        
+        return view('dashboard.index', compact('books'));
     }
 }
