@@ -13,6 +13,7 @@
             <th>Judul</th>
             <th>Penulis</th>
             <th>Tahun</th>
+            <th>Kategori</th>
             <th>Stok</th>
             <th>Aksi</th>
         </tr>
@@ -21,6 +22,7 @@
             <td>{{ $book->judul }}</td>
             <td>{{ $book->penulis }}</td>
             <td>{{ $book->tahunterbit }}</td>
+            <td>{{ $book->category?->name ?? 'Belum ada kategori' }}</td>
             <td>{{ $book->stock }}</td>
             <td>
                 
@@ -47,7 +49,7 @@
         Swal.fire({
             title: 'Yakin mau dihapus?',
             text: "Data buku yang dihapus tidak dapat dikembalikan!",
-            icon: 'error',
+            icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
