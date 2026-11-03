@@ -8,6 +8,12 @@
         {{ session('success') }}
     </div>
     @endif
+
+    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
+    
     <table border="1" cellpadding="10">
         <tr>
             <th>Judul</th>
@@ -31,7 +37,7 @@
                 <form id="delete-form-{{ $book->id }}" action="{{ route('books.destroy', $book) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
-                    <button type="button" onclick="confirmDelete({{ $book->id }})">Hapus</button>
+                    <button type="button" onclick="confirmDelete('{{ $book->id }}')">Hapus</button>
                 </form>
             </td>
         </tr>
