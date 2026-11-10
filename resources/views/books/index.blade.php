@@ -8,11 +8,6 @@
         {{ session('success') }}
     </div>
     @endif
-
-    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
     
     <table border="1" cellpadding="10">
         <tr>
@@ -42,11 +37,26 @@
             </td>
         </tr>
         @endforeach
-        
     </table>
-        <a href="{{ url('books/create') }}" style="border: 4px double #0d6efd; padding: 6px 12px; text-decoration: none; color: #0d6efd; border-radius: 4px; display: inline-block; margin-bottom: 15px; font-weight: bold;">
+
+    <a href="{{ url('books/create') }}" style="border: 4px double #0d6efd; padding: 6px 12px; text-decoration: none; color: #0d6efd; border-radius: 4px; display: inline-block; margin-bottom: 15px; font-weight: bold;">
             + Tambah Buku
         </a>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+    
+        <div>
+            @can('manage-users')
+                <a href="{{ route('users.index') }}" style="border: 4px double #29bd16; padding: 6px 12px; text-decoration: none; color: #21a918; border-radius: 4px; display: inline-block; margin-bottom: 15px; font-weight: bold;">[Kelola Pengguna]</a>
+            @endcan
+
+        </div>
+        <form action="{{ route('logout') }}" method="POST" style="border: 4px double #c71313; padding: 6px 12px; text-decoration: none; color: #b11016; border-radius: 4px; display: inline-block; margin-bottom: 15px; font-weight: bold;">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
+    </div>
+
 @endsection
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

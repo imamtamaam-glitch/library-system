@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 Route::resource('books', BookController::class);
 
@@ -12,7 +13,6 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/members', [MemberController::class, 'index']);
 
-//auth
 Route::get('/', function () {
     return redirect()->route('login');
 });
@@ -23,4 +23,9 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::resource('books', BookController::class);
+
+    Route::middleware('can:manage-users')->group(function () {
+        Route::resource('users', UserController::class);
+    });
+
 });
