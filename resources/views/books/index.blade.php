@@ -17,6 +17,7 @@
             <th>Kategori</th>
             <th>Stok</th>
             <th>Aksi</th>
+            <th>Kategori</th>
         </tr>
         @foreach($books as $book)
         <tr>
@@ -25,6 +26,7 @@
             <td>{{ $book->tahunterbit }}</td>
             <td>{{ $book->category?->name ?? 'Belum ada kategori' }}</td>
             <td>{{ $book->stock }}</td>
+            <td>{{ $book->category->name ?? '-' }}</td>
             <td>
                 
                 <a href="{{ route('books.edit', $book) }}">Edit</a>

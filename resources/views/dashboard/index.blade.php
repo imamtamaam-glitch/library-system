@@ -1,41 +1,23 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard')
-
 @section('content')
-<div class="container mt-4">
-    <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
-            <h1 class="mb-0">Wellcome to the library yall</h1>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table border="1" cellpadding="10"">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Judul Buku</th>
-                            <th>Penulis Buku</th>
-                            <th>Tahun terbit buku</th>
-                            <th>Stock</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($books as $book)
-                        <tr>
-                             <td>{{ $book->judul }}</td>
-                             <td>{{ $book->penulis }}</td>
-                             <td>{{ $book->tahunterbit }}</td>
-                             <td>{{ $book->stock }}</td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="5" class="text-center">Data buku belum tersedia.</td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+    <h1>Dashboard Sistem Informasi Perpustakaan</h1>
+    <p>Selamat datang, <strong>{{ auth()->user()->name }}</strong> ({{ ucfirst(auth()->user()->role) }})</p>
+
+    <table border="1" cellpadding="12" cellspacing="0">
+        <tr>
+            <th>Total Kategori</th>
+            <th>Total Judul Buku</th>
+            <th>Total Anggota</th>
+            <th>Total Transaksi</th>
+            <th>Sedang Dipinjam</th>
+        </tr>
+        <tr style="text-align: center; font-size: 20px; font-weight: bold;">
+            <td>{{ $totalCategories }}</td>
+            <td>{{ $totalBooks }}</td>
+            <td>{{ $totalMembers }}</td>
+            <td>{{ $totalBorrowings }}</td>
+            <td>{{ $activeBorrowings }}</td>
+        </tr>
+    </table>
 @endsection
